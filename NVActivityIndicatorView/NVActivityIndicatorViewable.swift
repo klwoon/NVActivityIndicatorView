@@ -29,11 +29,13 @@ public extension NVActivityIndicatorViewable where Self: UIViewController {
      - parameter type: animation type, value of NVActivityIndicatorType enum. Default type is BallSpinFadeLoader.
      - parameter color: color of activity indicator view. Default color is white.
      - parameter padding: view's padding. Default padding is 0.
+     - parameter backgroundColor: backgroundColor
+     - parameter center: center
      */
-    public func startActivityAnimating(size: CGSize? = nil, message: String? = nil, type: NVActivityIndicatorType? = nil, color: UIColor? = nil, padding: CGFloat? = nil) {
+    public func startActivityAnimating(size: CGSize? = nil, message: String? = nil, type: NVActivityIndicatorType? = nil, color: UIColor? = nil, padding: CGFloat? = nil, backgroundColor: UIColor? = nil, center: CGPoint? = nil) {
         let activityContainer: UIView = UIView(frame: UIScreen.mainScreen().bounds)
         
-        activityContainer.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        activityContainer.backgroundColor = backgroundColor ?? UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         activityContainer.restorationIdentifier = activityRestorationIdentifier
         
         let actualSize = size ?? NVActivityIndicatorView.DEFAULT_BLOCKER_SIZE
@@ -43,7 +45,7 @@ public extension NVActivityIndicatorViewable where Self: UIViewController {
             color: color,
             padding: padding)
         
-        activityIndicatorView.center = activityContainer.center
+        activityIndicatorView.center = center ?? activityContainer.center
         activityIndicatorView.hidesWhenStopped = true
         activityIndicatorView.startAnimation()
         activityContainer.addSubview(activityIndicatorView)
