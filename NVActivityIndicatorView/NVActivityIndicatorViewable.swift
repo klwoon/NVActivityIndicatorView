@@ -23,7 +23,7 @@ public extension NVActivityIndicatorViewable where Self: UIViewController {
 
     /**
      Create a activity indicator view with specified frame, type, color and padding and start animation.
-     
+
      - parameter size: activity indicator view's size. Default size is 60x60.
      - parameter message: message under activity indicator view.
      - parameter type: animation type, value of NVActivityIndicatorType enum. Default type is BallSpinFadeLoader.
@@ -34,22 +34,26 @@ public extension NVActivityIndicatorViewable where Self: UIViewController {
      */
     public func startActivityAnimating(size: CGSize? = nil, message: String? = nil, type: NVActivityIndicatorType? = nil, color: UIColor? = nil, padding: CGFloat? = nil, backgroundColor: UIColor? = nil, center: CGPoint? = nil) {
         let activityContainer: UIView = UIView(frame: UIScreen.mainScreen().bounds)
-        
+
         activityContainer.backgroundColor = backgroundColor ?? UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         activityContainer.restorationIdentifier = activityRestorationIdentifier
-        
+
+        activityContainer.accessibilityIdentifier = "NVActivityIndicatorContainerId"
+
         let actualSize = size ?? NVActivityIndicatorView.DEFAULT_BLOCKER_SIZE
         let activityIndicatorView = NVActivityIndicatorView(
             frame: CGRectMake(0, 0, actualSize.width, actualSize.height),
             type: type,
             color: color,
             padding: padding)
-        
+
+        activityIndicatorView.accessibilityIdentifier = "NVActivityIndicatorViewId"
+
         activityIndicatorView.center = center ?? activityContainer.center
         activityIndicatorView.hidesWhenStopped = true
         activityIndicatorView.startAnimation()
         activityContainer.addSubview(activityIndicatorView)
-        
+
         let width = activityContainer.frame.size.width / 3
         if let message = message where !message.isEmpty {
             let label = UILabel(frame: CGRectMake(0, 0, width, 30))
@@ -62,18 +66,18 @@ public extension NVActivityIndicatorViewable where Self: UIViewController {
             label.textColor = activityIndicatorView.color
             activityContainer.addSubview(label)
         }
-        
+
         UIApplication.sharedApplication().keyWindow!.addSubview(activityContainer)
     }
-    
+
     /**
      Stop animation and remove from view hierarchy.
      */
     public func stopActivityAnimating() {
         for item in UIApplication.sharedApplication().keyWindow!.subviews
-            where item.restorationIdentifier == activityRestorationIdentifier {
-                item.removeFromSuperview()
+        where item.restorationIdentifier == activityRestorationIdentifier {
+            item.removeFromSuperview()
         }
     }
-    
+
 }
