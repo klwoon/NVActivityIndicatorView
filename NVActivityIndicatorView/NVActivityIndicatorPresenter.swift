@@ -33,6 +33,9 @@ public class ActivityData {
 
     /// Background color of UI blocker.
     let blockerColor: UIColor
+
+    /// Center of activity indicator view.
+    let center: CGPoint?
     
     /**
      Create information package used to display UI blocker.
@@ -56,7 +59,8 @@ public class ActivityData {
                 padding: CGFloat? = nil,
                 displayTimeThreshold: Int? = nil,
                 minimumDisplayTime: Int? = nil,
-                blockerColor: UIColor? = nil) {
+                blockerColor: UIColor? = nil,
+                center: CGPoint? = nil) {
         self.size = size ?? NVActivityIndicatorView.DEFAULT_BLOCKER_SIZE
         self.message = message
         self.type = type ?? NVActivityIndicatorView.DEFAULT_TYPE
@@ -65,6 +69,7 @@ public class ActivityData {
         self.displayTimeThreshold = displayTimeThreshold ?? NVActivityIndicatorView.DEFAULT_BLOCKER_DISPLAY_TIME_THRESHOLD
         self.minimumDisplayTime = minimumDisplayTime ?? NVActivityIndicatorView.DEFAULT_BLOCKER_MINIMUM_DISPLAY_TIME
         self.blockerColor = blockerColor ?? UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        self.center = center
     }
 }
 
@@ -133,7 +138,7 @@ public class NVActivityIndicatorPresenter {
             color: activityData.color,
             padding: activityData.padding)
         
-        activityIndicatorView.center = activityContainer.center
+        activityIndicatorView.center = activityData.center ?? activityContainer.center
         activityIndicatorView.startAnimating()
         activityContainer.addSubview(activityIndicatorView)
         
