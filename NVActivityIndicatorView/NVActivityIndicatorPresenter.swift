@@ -86,7 +86,7 @@ public final class ActivityData {
                 padding: CGFloat? = nil,
                 displayTimeThreshold: Int? = nil,
                 minimumDisplayTime: Int? = nil,
-                center: CGPoint? = nil) {
+                center: CGPoint? = nil,
                 backgroundColor: UIColor? = nil) {
         self.size = size ?? NVActivityIndicatorView.DEFAULT_BLOCKER_SIZE
         self.message = message ?? NVActivityIndicatorView.DEFAULT_BLOCKER_MESSAGE
