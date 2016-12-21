@@ -53,12 +53,9 @@ public final class ActivityData {
     /// Minimum display time of UI blocker.
     let minimumDisplayTime: Int
 
-    /// Background color of UI blocker.
-    let blockerColor: UIColor
-
     /// Center of activity indicator view.
     let center: CGPoint?
-    
+
     /// Background color of the UI blocker
     let backgroundColor: UIColor
     
@@ -96,7 +93,7 @@ public final class ActivityData {
         self.padding = padding ?? NVActivityIndicatorView.DEFAULT_PADDING
         self.displayTimeThreshold = displayTimeThreshold ?? NVActivityIndicatorView.DEFAULT_BLOCKER_DISPLAY_TIME_THRESHOLD
         self.minimumDisplayTime = minimumDisplayTime ?? NVActivityIndicatorView.DEFAULT_BLOCKER_MINIMUM_DISPLAY_TIME
-        self.center = center
+        self.center = center ?? NVActivityIndicatorView.DEFUALT_BLOCKER_CENTER
         self.backgroundColor = backgroundColor ?? NVActivityIndicatorView.DEFAULT_BLOCKER_BACKGROUND_COLOR
     }
 }
