@@ -70,7 +70,7 @@ github "ninjaprox/NVActivityIndicatorView"
 
 Run `carthage` to build the framework and drag the built `NVActivityIndicatorView.framework` into your Xcode project.
 
-_**Note:** You might encounter compile issue, if so please use `carthage` branch instead. Check issue #101 for more information.
+_**Note:** You might encounter compile issue, if so please use `carthage` branch instead. Check issue [#101](https://github.com/ninjaprox/NVActivityIndicatorView/issues/101) for more information._
 
 ## Manual
 
@@ -186,6 +186,12 @@ Stop animating.
 
 ```swift
 NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+```
+
+Change message.
+
+```swift
+NVActivityIndicatorPresenter.sharedInstance.setMessage("Done")
 ```
 
 ## DEFAULTS
