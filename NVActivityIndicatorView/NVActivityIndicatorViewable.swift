@@ -59,6 +59,7 @@ public extension NVActivityIndicatorViewable where Self: UIViewController {
         padding: CGFloat? = nil,
         displayTimeThreshold: Int? = nil,
         minimumDisplayTime: Int? = nil,
+        center: CGPoint? = nil,
         backgroundColor: UIColor? = nil,
         textColor: UIColor? = nil) {
         let activityData = ActivityData(size: size,
@@ -69,6 +70,7 @@ public extension NVActivityIndicatorViewable where Self: UIViewController {
                                         padding: padding,
                                         displayTimeThreshold: displayTimeThreshold,
                                         minimumDisplayTime: minimumDisplayTime,
+                                        center: center,
                                         backgroundColor: backgroundColor,
                                         textColor: textColor)
         
