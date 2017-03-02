@@ -32,15 +32,15 @@ import UIKit
  *
  *  This extends abilities of UIViewController to display and remove UI blocker.
  */
-public protocol NVActivityIndicatorViewable { }
+public protocol NVActivityIndicatorViewable {}
 
 public extension NVActivityIndicatorViewable where Self: UIViewController {
-    
+
     /**
      Display UI blocker.
-     
+
      Appropriate NVActivityIndicatorView.DEFAULT_* values are used for omitted params.
-     
+
      - parameter size:                 size of activity indicator view.
      - parameter message:              message displayed under activity indicator view.
      - parameter messageFont:          font of message displayed under activity indicator view.
@@ -73,7 +73,7 @@ public extension NVActivityIndicatorViewable where Self: UIViewController {
                                         center: center,
                                         backgroundColor: backgroundColor,
                                         textColor: textColor)
-        
+
         NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
     }
 
