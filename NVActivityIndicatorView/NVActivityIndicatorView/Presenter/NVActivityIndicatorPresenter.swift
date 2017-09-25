@@ -253,12 +253,19 @@ public final class NVActivityIndicatorPresenter {
     }
 
     private func hide() {
-        guard let keyWindow = UIApplication.shared.keyWindow else { return }
-
-        for item in keyWindow.subviews
-            where item.restorationIdentifier == restorationIdentifier {
-            item.removeFromSuperview()
+        for window in UIApplication.shared.windows {
+            for item in window.subviews
+                where item.restorationIdentifier == restorationIdentifier {
+                    item.removeFromSuperview()
+            }
         }
+
+//        guard let keyWindow = UIApplication.shared.keyWindow else { return }
+
+//        for item in keyWindow.subviews
+//            where item.restorationIdentifier == restorationIdentifier {
+//            item.removeFromSuperview()
+//        }
         state = .hidden
     }
 }
